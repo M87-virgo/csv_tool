@@ -1,0 +1,297 @@
+#include "csv_classes.cpp"
+
+teamType::teamType(const int &id, const int &kitT, const int &wk, const int &w, const int &cg, 
+                const int &npm, const int &nc, const int &kf, const int &jt, const int &jfs, const int &np1,
+				const int &jddfs, const int &np2, const int &numc, const int &jc1, const int &jc2, 
+				const int &jc3, const int &st, const int &scol1, const int &scol2, const int &scol3,
+				const int &snp, const int &snfs, const int &snc, const int &snX, const int &snY, 
+                const int &sot, const int &soc1, const int &soc2, const int &soc3, const int &jnc,
+				const int &sncol, const int &snhp, const int &kca_h, const int &kca_s, const int &kca_v)
+{
+	teamId = id;
+	
+	kitType = kitT;
+	wetKit = wk;
+	wrinkle = w;
+	collarGeometry = cg;
+	namePlacement = npm;
+	nameColor = nc;
+	kitFont = kf;
+	jerseyType = jt;
+	jerseyFontSize = jfs;
+	numberPlace1 = np1;
+	jerseyDoubleDigitFontSize = jddfs;
+	numberPlace2 = np2;
+	numberColor = numc;
+	jerseyColor1 = jc1;
+	jerseyColor2 = jc2;
+	jerseyColor3 = jc3;
+	shortType = st;
+	shortColor1 = scol1;
+	shortColor2 = scol2;
+	shortColor3 = scol3;
+	shortNumberPlacement = snp;
+	shortNumberFontSize = snfs;
+	shortNumberColor = snc;
+	shortNumberX = snX;
+	shortNumberY = snY;
+	sockType = sot;
+	sockColor1 = soc1;
+	sockColor2 = soc2;
+	sockColor3 = soc3;
+	jerseyNumberColorId = jnc;
+	shortsNumberColorId = sncol;
+	shortsNumberHotSpotId = snhp;
+	kitClashAvrhsv_h = kca_h;
+	kitClashAvrhsv_s = kca_s;
+	kitClashAvrhsv_v = kca_v;
+}
+teamType::teamType(const int &id, const int &cap, const int &pt, const int &kt,
+					const int &lct, const int &rct, const string &tn = "FC Lorem Ipsum", const string &tgn = "", const int &pr = 14, 
+                    const int &gk = 0, const int &bt = 6, const int &ab = 1, const int &sta = 25, const int &gb = 1, 
+                    const int &tsta = 38, const int &sc = 1, const int &o = 1, const int &ass = 0, const int &tc = 70, const int &orat = 70,
+					const int &ot = 0, const int &wb = 0, const int &f = 13, const int &att = 0, const int &tm = 2, const int &at1 = 1,
+					const int &at2 = 2, const int &dt1 = 8, const int &dt2 = 9, const int &nti = 0)
+{
+	teamId = id;
+	teamName = tn;
+	teamGenericName = tgn;
+    teamPrestige = pr;
+    genericKitId = id;
+    ballType = bt;
+    adboardId = ab;
+    stadiumId = sta;
+    genericBanner = gb;
+    trainingsStadiumId = tsta;
+    speechCountry = sc;
+    opponent = o;
+    assetId = id;
+    teamChemistry = tc;
+    overallRating = orat;
+	
+	offsideTrap = ot;
+	withoutBall = wb;
+	formationId = f;
+	attack = att;
+	teamMentality = tm;
+	attackTactic1 = at1;
+	attackTactic2 = at2;
+	defenseTactic1 = dt1;
+	defenseTactic2 = dt2;
+	captain = cap;
+	penaltyTakerId = pt;
+	kickTakerId = kt;
+	leftCornerkickTakerId = lct;
+	rightCornerkickTakerId = rct;
+	numTransfersIn = nti;
+}
+void teamType::writeTeamData(ofstream &tf)
+{
+	tf << teamId << "\t" << teamName << "\t" << teamGenericName << "\t" << teamPrestige << "\t" 
+			<< genericKitId << "\t" << ballType << "\t" << adboardId << "\t" 
+			<< stadiumId << "\t" << genericBanner << "\t" << trainingsStadiumId << "\t" << speechCountry << "\t" 
+			<< opponent << "\t" << assetId << "\t" << teamChemistry << "\t" << overallRating << endl;
+}
+void teamType::writeTeamKits(ofstream &tf)
+{
+	tf << teamId << "\t" << kitType << "\t" << wetKit << "\t" << wrinkle << "\t" 
+			<< collarGeometry << "\t" << namePlacement << "\t" << nameColor << "\t" << kitFont << "\t" 
+			<< jerseyType << "\t" << jerseyFontSize << "\t" << numberPlace1 << "\t" << jerseyDoubleDigitFontSize << "\t" 
+			<< numberPlace2 << "\t" << numberColor << "\t" << jerseyColor1 << "\t" << jerseyColor2 << "\t" 
+			<< jerseyColor3 << "\t" << shortType << "\t" << shortColor1 << "\t" << shortColor2 << "\t" << shortColor3 << "\t" 
+			<< shortNumberPlacement << "\t" << shortNumberFontSize << "\t" << shortNumberColor << "\t" << shortNumberX << "\t" 
+			<< shortNumberY << "\t" << sockType << "\t" << sockColor1 << "\t" << sockColor2 << "\t" << sockColor3 << "\t" 
+			<< jerseyNumberColorId << "\t" << shortsNumberColorId << "\t" << shortsNumberHotSpotId << "\t" 
+			<< kitClashAvrhsv_h << "\t" << kitClashAvrhsv_s << "\t" << kitClashAvrhsv_v << endl;
+}
+void teamType::teamWrite(ofstream &tf)
+{
+	tf << teamId << "\t" << offsideTrap << "\t" << withoutBall << "\t" << formationId << "\t" 
+			<< attack << "\t" << teamMentality << "\t" << attackTactic1 << "\t" 
+			<< attackTactic2 << "\t" << defenseTactic1 << "\t" << defenseTactic2 << "\t" << captain << "\t" 
+			<< penaltyTakerId << "\t" << kickTakerId << "\t" << leftCornerkickTakerId << "\t" << rightCornerkickTakerId << "\t" 
+			<< numTransfersIn << endl;
+}
+
+
+playerType::playerType(const int &pid, const int &ycv, const int &sCol, const int &cel, const int &lmht, const int &reti, const int &pf, const int &injp, const int &pp, const int &nat, 
+					const string &fn = "Lorem", const string &sn = "Ipsum", const int &bd = 145080, const int &c = 0, const int &dsh = 0, const int &on = 0, const int &dsc = 2, 
+                    const int &dtc = 2, const int &r = 0, const int &hsh = 0, const int &hg = 178, const int &wg = 73, const int &ft = 52, const int &hc = 2, const int &ht = 25,
+					const int &fhs = 1, const int &leg = 3, const int &sl = 0, const int &acc1 = 0, const int &aCol1 = 5, const int &acc2 = 0, const int &aCol2 = 5, 
+					const int &acc3 = 0, const int &aCol3 = 5, const int &acc4 = 0, const int &aCol4 = 5, const int &acc5 = 0, const int &aCol5 = 5, const int &a = 68,
+					const int &agg = 68, const int &p = 68, const int &stam = 68, const int &s = 68, const int &b = 68, const int &mar = 68, const int &t = 68, const int &bc = 68,
+					const int &dri = 68, const int &cr = 68, const int &h = 68, const int &pass = 68, const int &lb = 68, const int &lsacc = 68, const int &sacc = 68, const int &sp = 68,
+					const int &anti = 68, const int &refl = 68, const int &rush = 68, const int &hand = 68, const int &gkp = 68, const int &crea = 68, const int &pComp = 68, 
+					const int &stpl = 0, const int &asi = 0, const int &pot = 85, const int &bsc = 1, const int &ls = 68)
+{
+	playerId = pid;
+	firstName = fn;
+	surName = sn;
+    birthDate = bd;
+    current = c;
+    disableStarHead = dsh;
+    originalName = on;
+    yearContractValidtil = ycv;
+    developmentStyleCode = dsc;
+    developmentTypeCode = dtc;
+    reincarnation = r;
+    hasStarHead = hsh;
+	
+	height = hg;
+	weight = wg;
+	preferredPosition = pp;
+	preferredFoot = pf;
+	faceTypeId = ft;
+	hairColorId = hc;
+	hairTypeId = ht;
+	facialHairStyleId = fhs;
+	legTypeId = leg;
+	sleeveLength = sl;
+	accessoryId1 = acc1;
+	accessoryColor1 = aCol1;
+	accessoryId2 = acc2;
+	accessoryColor2 = aCol2;
+	accessoryId3 = acc3;
+	accessoryColor3 = aCol3;
+	accessoryId4 = acc4;
+	accessoryColor4 = aCol4;
+	accessoryId5 = acc5;
+	accessoryColor5 = aCol5;
+	shoeColor = sCol;
+	injuryProne = injp;
+	acceleration = a;
+	aggression = agg;
+	pace = p;
+	stamina = stam;
+	strength = s;
+	balance = b;
+	marking = mar;
+	tackling = t;
+	ballControl = bc;
+	dribbling = dri;
+	crossing = cr;
+	heading = h;
+	passing = pass;
+	longBalls = lb;
+	longShotAccuracy = lsacc;
+	shotAccuracy = sacc;
+	shotPower = sp;
+	anticipation = anti;
+	reflexes = refl;
+	rushing = rush;
+	handling = hand;
+	gkPositioning = gkp;
+	creativity = crea;
+	playerComposure = pComp;
+	starPlayer = stpl;
+	assetId = pid;
+	potential = pot;
+	nationality = nat;
+	bodySizeCode = bsc;
+	leaderShip = ls;
+	lowMedHairTypeId = lmht;
+	retirementage = reti;
+	celebration = cel;
+}
+void playerType::writePlayersData(ofstream &tf)
+{
+	tf << playerId << "\t" << firstName << "\t" << surName << "\t" << birthDate << "\t" 
+			<< current << "\t" << disableStarHead << "\t" << originalName << "\t" 
+			<< yearContractValidtil << "\t" << developmentStyleCode << "\t" << developmentTypeCode << "\t" << reincarnation << "\t" 
+			<< hasStarHead << endl;
+}
+void playerType::writePlayersData2(ofstream &tf)
+{
+	tf << playerId << "\t" << height << "\t" << weight << "\t" << preferredPosition << "\t" 
+			<< preferredFoot << "\t" << faceTypeId << "\t" << hairColorId << "\t" << hairTypeId << "\t" 
+			<< facialHairStyleId << "\t" << legTypeId << "\t" << sleeveLength << "\t" << accessoryId1 << "\t" 
+			<< accessoryColor1 << "\t" << accessoryId2 << "\t" << accessoryColor2 << "\t" << accessoryId3 << "\t" 
+			<< accessoryColor3 << "\t" << accessoryId4 << "\t" << accessoryColor4 << "\t" << accessoryId5 << "\t" << accessoryColor5 << "\t" 
+			<< shoeColor << "\t" << injuryProne << "\t" << acceleration << "\t" << aggression << "\t" << pace << "\t" << stamina << "\t"
+			<< strength << "\t" << balance << "\t" << marking << "\t" << tackling << "\t" << ballControl << "\t" << dribbling << "\t" 
+			<< crossing << "\t" << heading << "\t" << passing << "\t" << longBalls << "\t" << longShotAccuracy << "\t" 
+			<< shotAccuracy << "\t" << shotPower << "\t" << anticipation << "\t" << reflexes << "\t" << rushing << "\t" << handling << "\t" 
+			<< gkPositioning << "\t" << creativity << "\t" << playerComposure << "\t" << starPlayer << "\t" << assetId << "\t" 
+			<< potential << "\t" << nationality << "\t" << bodySizeCode << "\t" << leaderShip << "\t" << lowMedHairTypeId << "\t" << retirementage << "\t" 
+			<< celebration << endl;
+}
+
+
+playerTeamType::playerTeamType(const int &id, const int &pid, const int &jn, const int &po)
+{
+	teamId = id;
+	playerId = pid;
+	jerseyNumber = jn;
+	position = po;
+}
+void playerTeamType::writeTeamPlayerLinks(ofstream &tf)
+{
+	tf << teamId << "\t" << playerId << "\t" << jerseyNumber << "\t" << position << endl; 
+}
+
+
+teamCountryType::teamCountryType(const int &id, const int &cId)
+{
+	teamId = id;
+	countryId = cId;
+}
+void teamCountryType::writeTeamCountry(ofstream &tf)
+{
+	tf << teamId << "\t" << countryId << endl;
+}
+
+
+textIdType::textIdType(const int &tId, const string &ln)
+{
+	textId = tId;
+	langName = ln;
+}
+void textIdType::writeTextId(ofstream &tf)
+{
+	tf << textId << "\t" << langName << endl;
+}
+
+//Global functions
+int fetchesHighestId(ifstream &f)
+{
+	int key = 0;
+	string line1, line2;
+    while (getline(f, line1) ) 
+    {
+        line2.swap(line1);
+    }
+    if (f.bad() || !f.eof() ) 
+    {
+        cout << "Dateifehler" << endl;
+		return 1;
+    } 
+    else 
+    {
+        replace(line2.begin(), line2.end(), '\t', ' ');
+        std::istringstream lineStream(line2);
+    
+        lineStream >> key;
+    }
+	return key;
+}
+int randMemberUniform(std::default_random_engine &g, const int &a, const int &b)
+{
+    using Udistr = std::uniform_int_distribution<int>;
+	Udistr rval{};
+	
+	return rval(g, Udistr::param_type{a, b} );
+}
+unsigned randMemberPoisson(std::default_random_engine &g, const double &m)
+{
+    using Dstr = std::poisson_distribution<unsigned>;
+	Dstr ranv{};
+	
+	return ranv(g, Dstr::param_type{m} );
+}
+auto randMemberBernoulli(std::default_random_engine &g, const double &m)
+{
+    using Bdistr = std::bernoulli_distribution;
+	Bdistr rb{};
+	
+	return rb(g, Bdistr::param_type{m} );
+}
