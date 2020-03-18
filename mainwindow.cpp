@@ -5,14 +5,12 @@
 #include <random>
 #include <QFuture>
 #include <QtConcurrent/QtConcurrent>
-#include <QColor>
-#include <QProgressDialog>
 
 #include <csv_writedata_rest.cpp>
 #include <csv_writedata_teamType.cpp>
 #include <csv_writedata_playerType.cpp>
 
-#include <free_forloop_and_randomize_functions.cpp>
+#include <template_and_randomize_functions.cpp>
 
 using namespace QtConcurrent;
 
@@ -141,28 +139,28 @@ void MainWindow::CmdWriteDataClicked()
     QString filePath = {};
 
     filePath = "players.csv";
-    QFuture<void> f1 = run(writePlayersDataForLoop2, player, filePath);
+    QFuture<void> f1 = run([&, filePath]{ writeData(player, filePath, &playerType::writePlayersData2); } );
 
     filePath = "playerwrite.csv";
-    QFuture<void> f2 = run(writePlayersDataForLoop, player, filePath);
+    QFuture<void> f2 = run([&, filePath]{ writeData(player, filePath, &playerType::writePlayersData); } );
 
     filePath = "language.csv";
-    QFuture<void> f3 = run(writeTextIdForLoop, teId, filePath);  
+    QFuture<void> f3 = run([&, filePath]{ writeData(teId, filePath, &textIdType::writeTextId); } );
 
     filePath = "teamplayerlinks.csv";
-    QFuture<void> f4 = run(writeTeamPlayerLinksForLoop, teamPlayerLinks, filePath);   
+    QFuture<void> f4 = run([&, filePath]{ writeData(teamPlayerLinks, filePath, &playerTeamType::writeTeamPlayerLinks); } );
 
     filePath = "teamkits.csv";
-    QFuture<void> f5 = run(writeTeamKitsForLoop, teamKits, filePath);   
+    QFuture<void> f5 = run([&, filePath]{ writeData(teamKits, filePath, &teamType::writeTeamKits); } );
 
     filePath = "teamwrite.csv";
-    QFuture<void> f6 = run(writeTeamsForLoop, teams, filePath);
+    QFuture<void> f6 = run([&, filePath]{ writeData(teams, filePath, &teamType::writeTeams); } );
 
     filePath = "teams.csv";
-    QFuture<void> f7 = run(writeTeamDataForLoop, teams, filePath);
+    QFuture<void> f7 = run([&, filePath]{ writeData(teams, filePath, &teamType::writeTeamData); } );
 
     filePath = "team_country.csv";
-    QFuture<void> f8 = run(writeTeamCountryForLoop, tCoun, filePath);
+    QFuture<void> f8 = run([&, filePath]{ writeData(tCoun, filePath, &teamCountryType::writeTeamCountry); } );
 
     f1.waitForFinished();
     f2.waitForFinished();

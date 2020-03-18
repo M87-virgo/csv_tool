@@ -19,9 +19,9 @@ SOURCES += \
     csv_writedata_playerType.cpp \
     csv_writedata_rest.cpp \
     csv_writedata_teamType.cpp \
-    free_forloop_and_randomize_functions.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    template_and_randomize_functions.cpp
 
 HEADERS += \
     csv_const.hpp \
